@@ -2,16 +2,15 @@
 // https://quote-garden.onrender.com/api/v3/quotes
 
 const formSubmit = document.getElementById('submit');
-const resetButton = document.getElementById("reset")
+const resetButton = document.getElementById("reset");
+const exampleBox = document.querySelector("body > div:last-of-type");
+
 
 resetButton.addEventListener('click', () => {
     document.getElementById("output-space").innerHTML = "";
 })
 
 function getResponse(out_lim, genre_selected) {
-    // const response = await fetch(`https://quote-garden.onrender.com/api/v3/quotes?genre=${genre_selected}&limit=${out_lim}`);
-    // const body = await response.json();
-    // console.log(body);
     if ( genre_selected != "all")
     {
         return fetch(`https://quote-garden.onrender.com/api/v3/quotes?genre=${genre_selected}&limit=${out_lim}`)
@@ -32,6 +31,28 @@ function getResponse(out_lim, genre_selected) {
         })
     }
 }
+
+
+function interval_timer(duration) {
+    const promise = new Promise((resolve, reject) => {
+        const options = ["all", "positive", "humor", "knowledge", "learning", "business"];
+        let counter = 1;
+        let flag = false;
+        setInterval( async () => {
+            let curQuote = await getResponse(1, options[(counter)%options.length] )
+            console.log(curQuote)
+            counter++;
+            if (!(flag)) {
+                exampleBox.setAttribute("id", "interval-example");
+                flag = true;
+            }
+            exampleBox.innerHTML = `<span>"${curQuote.data[0].quoteText}"<br><br>Author: ${curQuote.data[0].quoteAuthor}<s/pan>`
+            resolve()
+        }, duration);
+    })
+}
+
+interval_timer(5000);
 
 formSubmit.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -61,8 +82,6 @@ formSubmit.addEventListener('submit', async (event) => {
 
         }
     }
-    let newOutput = document.getElementById('output-space');
-
 });
 
 

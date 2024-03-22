@@ -30,6 +30,12 @@ div#page-head {
     background-color: #F08080;
 }
 
+div#interval-example {
+    border:  thick solid rgb(127, 50, 168);
+    padding: 5px;
+    background-color: rgb(186, 219, 125);
+}
+
 .output-list {
     font-family: Sofia, cursive;
     list-style-type: none;
