@@ -1,0 +1,44 @@
+body {
+    /* background-image: url('mixed-msg-background.jpeg'); */
+    font-family: "Roboto", sans-serif;
+    background-color: #F0E68C;
+}
+
+h1#main-heading {
+    font-family: 'Coiny', sans-serif;
+    color: 	white;
+}
+
+div.form-component {
+    padding-left: 30%;
+    padding-right: 30%;
+    /* margin: 10px; */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+div#page-head {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    top: 0;
+    justify-content: center;
+    /* height: 20px; */
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 5px;
+    background-color: #F08080;
+}
+
+.output-list {
+    font-family: Sofia, cursive;
+    list-style-type: none;
+}
+
+input[type='submit'], input[type='button'] {
+    height: 40px;
+    width: 80px;
+    font-size: 1em;
+    border-radius: 10%;
+}
+
